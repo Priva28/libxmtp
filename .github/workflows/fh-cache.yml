@@ -1,3 +1,4 @@
+name: Cache all Nix Outputs
 on:
   workflow_dispatch:
   push:
@@ -9,7 +10,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 jobs:
-  flakehub-publish:
+  build:
     strategy:
       matrix:
         os:
@@ -18,7 +19,7 @@ jobs:
             warp-macos-15-arm64-6x,
             warp-ubuntu-latest-arm64-16x,
           ]
-     runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     permissions:
       id-token: write
       contents: read
