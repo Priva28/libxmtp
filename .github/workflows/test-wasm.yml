@@ -22,7 +22,7 @@ jobs:
           nix build .#validation-service-image-musl64
           dev/docker/up
       - name: run tests
-        run: just test wasm
+        run: just wasm test
 
   wasm-integration:
     name: WASM Integration Tests
